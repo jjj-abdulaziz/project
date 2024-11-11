@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        .logo {
+            width: 70px;
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+    .small-img-group {
+        display: flex;
+        gap: 1px; /* Adjust the value to increase or decrease space between images */
+    }
+    
+    .small-img-col {
+        flex: 1;
+        /* Optional: add padding or margin if needed */
+        margin-right: 10px;
+    }
+    
+    .small-img-col:last-child {
+        margin-right: 0; /* Remove margin from the last image */
+    }
+    
+    .small-img, #MainImg {
+        border-radius: 5px; /* Adds rounded corners to both small images and the main image */
+    }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+        
+        <div>
+            <ul id="navbar">
+                <i id="close" class="fas fa-times"></i>
+                <li><a href="{% url 'core:index' %}">Home</a></li>
+                <li><a class="active" href="{% url 'core:shop' %}">Shop</a></li>
+                <li><a href="{% url 'core:blog' %}">Blog</a></li>
+                <li><a href="{% url 'core:about' %}">About</a></li>
+                <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+        <div id="mobile">
+            <i id="barr" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="product_details" class="section-p1">
+        <div class="single-product-image">
+            <img src="{{product.image.url}}" width="100%" id="MainImg" alt="product image">
+        
+        
+            <div class="small-img-group">
+               
+                {% for product in product_image %}
+                <div class="small-img-col">
+                    <img src="{{product.images.url}}"  width=100% class="small-img" alt="product image">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="single-pro-details">
+            <h6>Home / {{product.title}}</h6>
+            <h4> {{product.title}}</h4>
+            <div class="product-price">
+               <h2> <span>KES</span><span id="current-product-price">{{product.price}}</span> </h2>
+            </div>
+            <select id="productType">
+                <option>Select Type</option>
+                {% for option in product.options.colors %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select> 
+            <input type="number" id="product-quantity" value="1" class="w-25 mb-20">
+            <input type="hidden" value ="{{ product.pid }}" class="product-pid" >
+            <input type="hidden" value ="{{ product.id }}" class="product-id" name="" id="">
+            <input type="hidden" value="{{ product.title }}" class="product-title">
+            <input type="hidden" value ="{{ product.image.url }}" class="product-image">
+            <button  class="normal" id="add-to-cart-btn">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span> {{product.description}} </span>
+        </div>
+       
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address">
+            <button class="normal"> Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <p>Baredu Collection</p>
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>: Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+            <p><strong>Phone:</strong> +254700811428</p>
+            <p><strong>Hours:</strong> 24/7</p>
+            <div class="follow"> 
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class=" fab fa-facebook-f"></i>
+                    <i class=" fab fa-twitter"></i>
+                    <i class=" fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms And Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'assets/images/app.jpg' %}">
+                <img src="{% static 'assets/images/play.jpg' %}">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static 'assets/images/pay.png' %}">
+        </div>
+    </footer>
+     <script>
+                // JavaScript code to change the main image based on the small image
+               var MainImg = document.getElementById("MainImg");
+               var smallimg = document.getElementsByClassName("small-img");
+       
+               // Add event listeners to each small image
+               for (var i = 0; i < smallimg.length; i++) {
+                   smallimg[i].onclick = function(event) {
+                       MainImg.src = event.target.src;
+                   };
+               }
+               
+               
+     </script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           <script src="{% static 'assets/style.js' %}"></script>
+  
+</body>
+</html>

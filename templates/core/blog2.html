@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        .logo {
+        width: 70px;
+        height: auto; /* Maintain aspect ratio */
+         }
+</style>
+</head>
+
+<body>
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+       <div>
+        <ul id="navbar">
+            <i id="close" class="fas fa-times"></i>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a class="active"href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+          
+        </ul>
+       </div>
+       <div id="mobile">
+        <i id="barr"  class="fas fa-outdent"></i>
+       </div>
+    </section>
+
+    <section id="product_details" class="section-p1">
+        <div class="single-product-image">
+            <img src="{% static 'assets/images/blog02.jpg' %}" width="100%" id="MainImg" alt=""> 
+        
+        </div>
+        
+    
+    <div class="single-pro-details">
+        <h6>Home / Bonded Leather</h6>
+        <h4>A type of upholstery material crafted by bonding leather scraps</h4>
+      
+     <p>Bonded leather, a curious fusion of genuine leather scraps and synthetic materials, occupies a unique niche in the world of upholstery and fashion. Unlike traditional leather, which is crafted from a single piece of animal hide, bonded leather is composed of shredded leather fibers bonded together with adhesive and reinforced with a backing material.
+
+        At first glance, bonded leather captivates with its resemblance to genuine leather, boasting a smooth surface and supple texture that echoes its natural counterpart. This resemblance often leads to its adoption in furniture upholstery, where it offers an affordable option for those seeking the luxurious look and feel of leather without the accompanying price tag.
+        
+        However, despite its visual and tactile appeal, bonded leather harbors a contentious reputation within the industry. Critics argue that its composition compromises durability and longevity, as the bonded fibers are prone to peeling and degradation over time, especially with frequent use or exposure to harsh conditions.
+        
+        Yet, proponents of bonded leather emphasize its sustainability, highlighting its ability to repurpose leather scraps that would otherwise go to waste. By incorporating these remnants into a new material, bonded leather presents a compelling case for resource efficiency and waste reduction, aligning with the principles of circular economy.
+        
+        Nevertheless, the debate surrounding bonded leather persists, with consumers weighing its affordability against its longevity and environmental impact. While some may view it as a cost-effective compromise, others may opt for alternatives that prioritize durability and sustainability.
+        
+        In essence, bonded leather occupies a complex intersection between style, affordability, and sustainability, challenging consumers to navigate its nuances and make informed choices based on their priorities and values.</p>
+    </section>
+
+ 
+   
+       
+        </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+                <div class="newstext">
+                    <h4>Sign Up For Newsletters</h4>
+                    <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Your email address">
+                    <button class="normal"> Sign Up</button>
+                </div>
+            </section>
+
+    <footer class="section-p1">
+                <div class="col">
+                    <p>Baredu Collection</p>
+                    <h4>Contact</h4>
+                    <p><strong>Address: </strong>: Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+                    <p><strong>Phone:</strong> +254700811428</p>
+                    <p><strong>Hours:</strong> 24/7</p>
+                    <div class="follow"> 
+                        <h4>Follow Us</h4>
+                        <div class="icon">
+                            <i class=" fab fa-facebook-f"></i>
+                            <i class=" fab fa-twitter"></i>
+                            <i class=" fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h4>About</h4>
+                    <a href="{% url 'core:about' %}">About us</a>
+                    <a href="#">Delivery Information</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms And Conditions</a>
+                    <a href="{% url 'core:contact' %}">Contact Us</a>
+                </div>
+                <div class="col">
+                    <h4>My Account</h4>
+                    <a href="#">Sign In</a>
+                    <a href="#">View cart</a>
+                    <a href="#">My Wishlist</a>
+                    <a href="#">Track My Order</a>
+                    <a href="#">Help</a>
+                </div>
+
+                <div class="col install">
+                    <h4>Install App</h4>
+                    <p>From App Store or Google Play</p>
+                    <div class="row">
+                        <img src="{% static 'assets/images/app.jpg' %}" alt="App Store">
+                        <img src="{% static 'assets/images/play.jpg' %}" alt="Google Play">
+                    </div>
+                    <p>Secured Payment Gateways</p>
+                    <img src="{% static 'assets/images/pay.png' %}" alt="Payment Gateways">
+                </div>
+            </footer>
+            <script src="{% static 'assets/style.js' %}"></script>
+                
+            </body>
+            
+            </html>

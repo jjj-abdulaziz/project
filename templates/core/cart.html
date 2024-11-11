@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        .logo {
+            width: 70px;
+            height: auto;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 10px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            text-align: left;
+            white-space: normal;
+            width: 20%;
+            box-sizing: border-box;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr {
+            border-bottom: 2px solid #ddd;
+            width: 100%;
+        }
+
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+
+        #cart-add {
+            margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+                width: auto;
+            }
+
+            thead tr {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border-bottom: 2px solid #ddd;
+            }
+
+            thead tr, tbody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                position: relative;
+                border-right: none;
+                border-left: 5px solid #ddd;
+                white-space: normal;
+                word-wrap: break-word;
+                width: 100%;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-left: 10px;
+                font-weight: bold;
+                text-align: left;
+                white-space: nowrap;
+            }
+
+            td:last-child {
+                border-right: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="main" id="cart-list">
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+        <div>
+            <ul id="navbar">
+                <i id="close" class="fas fa-times"></i>
+                <li><a href="{% url 'core:index' %}">Home</a></li>
+                <li><a href="{% url 'core:shop' %}">Shop</a></li>
+                <li><a href="{% url 'core:blog' %}">Blog</a></li>
+                <li><a href="{% url 'core:about' %}">About</a></li>
+                <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+        <div id="mobile">
+            <i id="barr" class="fas fa-outdent"></i>
+        </div>
+    </section>
+    
+    <section id="page-header" class="about-header" style="background-image: url('{% static 'assets/images/banner.png' %}');">
+        <h2>#Thank You</h2>
+        <p>Upgrade your lifestyle with Baredu Collection</p>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table>
+            <thead>
+                <tr>
+                    {% comment %} <th scope="col">Checkbox</th> {% endcomment %}
+                    <th scope="col">Title</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product_id, item in cart_data.items %}
+                <tr>
+                    {% comment %} <td><input type="checkbox" class="cart-item-checkbox" data-product-id="{{ product_id }}"></td> {% endcomment %}
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.Type }}</td>
+                    <td>KES {{ item.price }}</td>
+                    <td class="action text-centre" data-title="Remove"><button style="border: none; background: none" class="text-body delete-product" data-product="{{ product_id }}"><i class="fas fa-trash"></button></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <section id="cart-add" class="section-p1">
+            <div id="coupon">
+                <h3>Apply Coupon</h3>
+                <div>
+                    <input type="text" placeholder="Enter Your Coupon">
+                    <button class="normal">Apply</button>
+                </div>
+            </div>
+
+            <div id="subtotal">
+                <h3>Cart Total</h3>
+                <table>
+                    <tr>
+                        <td>Cart Total</td>
+                        <td id="cart-total">KES {{ cart_total_amount }}</td> <!-- Added ID for total -->
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>KES 500</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong id="total-amount">KES {{ cart_total_amount|add:500 }}</strong></td> <!-- Added ID for total -->
+                    </tr>
+                </table>
+                <button id="fix" class="normal">Proceed to Checkout</button>
+            </div>
+        </section>
+    </section>
+    
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <p>Baredu Collection</p>
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+            <p><strong>Phone:</strong> +254700811428</p>
+            <p><strong>Hours:</strong> 24/7</p>
+            <div class="follow"> 
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="{% url 'core:about' %}">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms And Conditions</a>
+            <a href="{% url 'core:contact' %}">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="{% url 'userauths:sign-out' %}">Sign out</a>
+            <a href="{% url 'core:cart' %}">View cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="{% static 'assets/images/app.jpg' %}" alt="App Image">
+                <img src="{% static 'assets/images/play.jpg' %}" alt="Play Image">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="{% static 'assets/images/pay.png' %}" alt="Pay Image">
+        </div>
+    </footer>
+    <script>
+        document.getElementById("fix").addEventListener("click", function() {
+            let cartItems = [];
+            const rows = document.querySelectorAll('tbody tr');
+    
+            rows.forEach(row => {
+                // Get table cells
+                const titleCell = row.querySelector('td:nth-child(1)');
+                const quantityCell = row.querySelector('td:nth-child(2)');
+                const typeCell = row.querySelector('td:nth-child(3)');
+                const priceCell = row.querySelector('td:nth-child(4)');
+    
+                // Check if cells exist before accessing innerText
+                if (titleCell && quantityCell && typeCell && priceCell) {
+                    const title = titleCell.innerText.trim(); // Title
+                    const quantity = quantityCell.innerText.trim(); // Quantity
+                    const type = typeCell.innerText.trim(); // Type
+                    const price = priceCell.innerText.trim(); // Price
+    
+                    cartItems.push(`${title} (Type: ${type}, Quantity: ${quantity}, Price: ${price})`);
+                } else {
+                    console.warn('One or more table cells are missing in the row.');
+                }
+            });
+    
+            const totalAmount = '{{ cart_total_amount|add:500 }}'; // Total including delivery
+            const message = `Hello, I would like to place an order for the following items:\n\n${cartItems.join('\n')}\n\nTotal Amount: KES ${totalAmount}`;
+    
+            const phoneNumber = '254700811428'; // Replace with your WhatsApp number
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+            // Log the message and link for debugging
+            console.log('Message:', message);
+            console.log('WhatsApp Link:', whatsappLink);
+    
+            // Open WhatsApp link in a new tab
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="{% static 'assets/style.js' %}"></script>
+    
+</main>
+</body>
+</html>

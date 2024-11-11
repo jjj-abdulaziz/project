@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        .logo {
+        width: 70px;
+        height: auto; /* Maintain aspect ratio */
+         }
+</style>
+</head>
+
+<body>
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+       <div>
+        <ul id="navbar">
+            <i id="close" class="fas fa-times"></i>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a class="active"href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+          
+        </ul>
+       </div>
+       <div id="mobile">
+        <i id="barr"  class="fas fa-outdent"></i>
+       </div>
+    </section>
+
+    <section id="product_details" class="section-p1">
+        <div class="single-product-image">
+            <img src="{% static 'assets/images/blog03.jpg' %}" width="100%" id="MainImg" alt=""> 
+        
+        </div>
+        
+    
+    <div class="single-pro-details">
+        <h6>Home / Top Grain Leather</h6>
+        <h4>The second highest grade of leather</h4>
+      
+     <p>Top grain leather stands as a testament to timeless elegance and unparalleled quality in the realm of leather goods. Renowned for its durability, luxurious texture, and natural beauty, top grain leather represents the pinnacle of leather craftsmanship.
+
+        Derived from the uppermost layer of the animal hide, top grain leather retains the inherent characteristics that make leather so coveted. Its surface boasts a smooth, refined finish, adorned with subtle imperfections that bear witness to the material's authenticity and heritage. From the graceful patina that develops with age to the distinct grain patterns that tell a story of rugged resilience, each piece of top grain leather bears the unique stamp of its origins.
+        
+        Beyond its aesthetic appeal, top grain leather excels in both durability and versatility. Its dense, fibrous structure grants it remarkable strength and resilience, making it resistant to wear and tear even under the most demanding conditions. Whether fashioned into sleek jackets, supple handbags, or sumptuous upholstery, top grain leather promises enduring quality and timeless sophistication.
+        
+        Moreover, top grain leather's natural breathability and supple texture ensure unparalleled comfort and ease of use, adapting effortlessly to the contours of the body or the curves of furniture. With each touch, its luxurious feel invites admiration and appreciation, elevating the sensory experience to new heights.
+        
+        In a world saturated with fleeting trends and disposable fashion, top grain leather stands as a steadfast symbol of enduring craftsmanship and uncompromising quality. From its rich history to its timeless allure, top grain leather continues to captivate hearts and minds, promising a legacy of luxury that transcends generations.</p>
+    </section>
+
+ 
+   
+       
+        </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+                <div class="newstext">
+                    <h4>Sign Up For Newsletters</h4>
+                    <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Your email address">
+                    <button class="normal"> Sign Up</button>
+                </div>
+            </section>
+
+    <footer class="section-p1">
+                <div class="col">
+                    <p>Baredu Collection</p>
+                    <h4>Contact</h4>
+                    <p><strong>Address: </strong>: Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+                    <p><strong>Phone:</strong> +254700811428</p>
+                    <p><strong>Hours:</strong> 24/7</p>
+                    <div class="follow"> 
+                        <h4>Follow Us</h4>
+                        <div class="icon">
+                            <i class=" fab fa-facebook-f"></i>
+                            <i class=" fab fa-twitter"></i>
+                            <i class=" fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h4>About</h4>
+                    <a href="{% url 'core:about' %}">About us</a>
+                    <a href="#">Delivery Information</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms And Conditions</a>
+                    <a href="{% url 'core:contact' %}">Contact Us</a>
+                </div>
+                <div class="col">
+                    <h4>My Account</h4>
+                    <a href="#">Sign In</a>
+                    <a href="#">View cart</a>
+                    <a href="#">My Wishlist</a>
+                    <a href="#">Track My Order</a>
+                    <a href="#">Help</a>
+                </div>
+                <div class="col install">
+                    <h4>Install App</h4>
+                    <p>From App Store or Google Play</p>
+                    <div class="row">
+                        <img src="{% static 'assets/images/app.jpg' %}" alt="App Store">
+                        <img src="{% static 'assets/images/play.jpg' %}" alt="Google Play">
+                    </div>
+                    <p>Secured Payment Gateways</p>
+                    <img src="{% static 'assets/images/pay.png' %}" alt="Payment Gateways">
+                </div>
+            </footer>
+            
+            <script src="{% static 'assets/style.js' %}"></script>
+            </body>
+            
+            </html>

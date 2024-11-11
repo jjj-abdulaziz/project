@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        /* Section title and description */
+        .section-p1 h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+        }
+        .logo {
+            width: 70px;
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+        .section-p1 p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Product container grid */
+        .pro-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Ensure products start from the left */
+          
+            gap: 15px;
+            margin: 0 auto; /* Center the container */
+            padding: 0;
+        }
+
+        /* Individual product card */
+        .pro {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            width: calc(25% - 15px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        /* Image in the product card */
+        .pro img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Product description */
+        .pro .des span {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        /* Product title */
+        .pro .des h5 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        /* Star rating */
+        .pro .des .star {
+            color: #f5b50a;
+            margin-bottom: 3px;
+        }
+
+        /* Product price */
+        .pro .des h4 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Add to cart icon */
+        .pro a i.cart {
+            color: #333;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for the product card */
+        .pro:hover {
+            transform: scale(1.05);
+        }
+
+        /* Change the color of the cart icon on hover */
+        .pro a:hover i.cart {
+            color: #f5b50a;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .pro {
+                width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pro {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+             
+       <div>
+        <ul id="navbar">
+            <i id="close" class="fas fa-times"></i>
+            <li><a class="active" href="{% url 'core:index' %}">Home</a></li>
+            <li><a href="{% url 'core:shop' %}">Shop</a></li>
+            <li><a href="{% url 'core:blog' %}">Blog</a></li>
+            <li><a href="{% url 'core:about' %}">About</a></li>
+            <li><a href="{% url 'core:contact' %}">Contact</a></li>
+            <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+        </ul>
+       </div>
+       <div id="mobile">
+        <i id="barr"  class="fas fa-outdent"></i>
+       </div>
+       
+    </section>
+    
+    <section id="hero" style="background-image: url('{% static 'assets/images/New hero.png' %}'); height: 90vh; width: 100%; background-size: cover; background-position: top 25% right 0%; padding: 0 80px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+       
+        <h4>Handcrafted products</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with our long lasting collection</p>
+        <a href="{% url 'core:shop' %}" style="display: inline-block; background-image: url('{% static 'assets/images/button.png' %}'); background-color: transparent; color: cadetblue; border: 0; padding: 14px 80px 14px 65px; background-repeat: no-repeat; cursor: pointer; font-weight: 750; font-size: 15px; text-decoration: none; text-align: center;">
+            Shop Now
+        </a>
+    </section>
+
+    <section id="feature" class="section-p1 ">
+        <div class="fe-box">
+            <img src="{% static 'assets/images/f1.png' %}" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'assets/images/f2.png' %}" alt="">
+            <h6>Fast Delivery</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'assets/images/f3.png' %}" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'assets/images/f4.png' %}" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="{% static 'assets/images/f5.png' %}" alt="">
+            <h6>Happy sell</h6>
+        </div>
+    </section>
+
+    
+
+   
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Products</h2>
+        <p>Baredu Collection New Modern Designs</p>
+        <div class="pro-container">
+            {% for product in products %}
+            <div class="pro">
+                <a href="{% url 'core:product-detail' product.pid %}">
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                <div class="des">
+                    <span>Baredu Collection</span>
+                    <h6>{{ product.category }}</h6>
+                    <h5>{{ product.title }}</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>KES {{ product.price }}</h4>
+                </div>
+                <a href="{% url 'core:product-detail' product.pid %}"><i class="fal fa-shopping-cart cart"></i></a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background-image: url('{% static 'assets/images/b16.jpg' %}'); width: 370px; height: 50vh; background-size: cover; background-position: center; padding: 40px; color: #fff;">
+            <h4>Men Collection</h4>
+        <h2>Cool Design</h2>
+        <span>The best design at crazy deals</span>
+        <a href="{% url 'core:shop' %}">
+        <button class="white">See Collection</button>
+    </div>
+    <div class="banner-box banner-box2" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background-image: url('{% static 'assets/images/b18.jpg' %}'); width: 370px; height: 50vh; background-size: cover; background-position: center; padding: 40px; color: #fff;">
+        <h4>Female Collection</h4>
+        <h2>Exclusive Design</h2>
+        <span>The best Designs for woem on all occasions</span>
+        <a href="{% url 'core:shop' %}">
+        <button class="white">See Collection</button>
+    </div>
+    <div class="banner-box banner-box3" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background-image: url('{% static 'assets/images/b4.jpg' %}'); width: 370px; height: 50vh; background-size: cover; background-position: center; padding: 40px; color: #fff;">
+        <h4>Unisex Designs</h4>
+        <h2>Exclusive Design</h2>
+        <span>The best collection for all</span>
+        <a href="{% url 'core:shop' %}">
+        <button class="white">Buy Now</button>
+   </div>
+
+</section>
+
+<section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+        <h4>Sign Up For Newsletters</h4>
+        <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+    </div>
+    <div class="form">
+        <input type="text" placeholder="Your email address">
+        
+        <button class="normal"> Sign Up</button>
+    </div>
+</section>
+
+<footer class="section-p1">
+    <div class="col">
+        <p>Baredu Collection</p>
+        <h4>Contact</h4>
+        <p><strong>Address: </strong>: Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+        <p><strong>Phone:</strong> +254700811428</p>
+        <p><strong>Hours:</strong> 24/7</p>
+        <div class="follow"> 
+            <h4>Follow Us</h4>
+            <div class="icon">
+                <i class=" fab fa-facebook-f"></i>
+                <i class=" fab fa-twitter"></i>
+                <i class=" fab fa-instagram"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>About</h4>
+        <a href="{% url 'core:about' %}">About us</a>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms And Conditions</a>
+        <a href="{% url 'core:contact' %}">Contact Us</a>
+    </div>
+    <div class="col">
+        <h4>My Account</h4>
+        <a href={% url 'userauths:sign-out' %}>Sign out</a>
+        <a href="#">View cart</a>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+            <img src="{% static 'assets/images/app.jpg' %}" alt="App Image">
+            <img src="{% static 'assets/images/play.jpg' %}" alt="Play Image">
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img src="{% static 'assets/images/pay.png' %}" alt="Pay Image">
+    </div>
+</footer>
+</footer>
+
+
+<script src="{% static 'assets/style.js' %}"></script>
+</body>
+
+</html>

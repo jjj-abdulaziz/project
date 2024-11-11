@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baredu Collection</title>
+    <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <style>
+        .logo {
+        width: 70px;
+        height: auto; /* Maintain aspect ratio */
+         }
+</style>
+</head>
+
+<body>
+    <section id="header">
+        <div>
+            <img src="{% static 'assets/images/logo.jpg' %}" alt="Baredu Collection Logo" class="logo">
+        </div>
+        <div>
+            <ul id="navbar">
+                <i id="close" class="fas fa-times"></i>
+                <li><a href="{% url 'core:index' %}">Home</a></li>
+                <li><a href="{% url 'core:shop' %}">Shop</a></li>
+                <li><a class="active" href="{% url 'core:blog' %}">Blog</a></li>
+                <li><a href="{% url 'core:about' %}">About</a></li>
+                <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                <li><a href="{% url 'core:cart' %}"><i class="far fa-shopping-bag"></i></a></li>
+            </ul>
+        </div>
+        <div id="mobile">
+            <i id="barr" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="product_details" class="section-p1">
+        <div class="single-product-image">
+        <img src="{% static 'assets/images/blog01.jpg' %}" width="100%" id="MainImg" alt="">
+        
+        </div>
+        
+    
+    <div class="single-pro-details">
+        <h6>Home / The Faux or Imitaton Leather</h6>
+        <h4>The synthetic man made leather designed to resemble genuine leather</h4>
+      
+     <p>Faux leather, a captivating alternative to its genuine counterpart, embodies a fascinating blend of innovation, sustainability, and style. Crafted meticulously to mimic the luxurious texture and appearance of real leather, it presents a compelling narrative of eco-consciousness and ethical fashion.
+
+        This synthetic material, often derived from polyurethane or PVC, boasts a versatility that transcends traditional leather's limitations. From sleek jackets to chic handbags, and even upholstery, faux leather graces a myriad of products with its distinct charm, offering consumers a guilt-free indulgence in fashion and design.
+        
+        But its allure extends beyond aesthetics; faux leather champions environmental sustainability by reducing reliance on animal-derived materials and minimizing ecological footprint. As the world pivots towards more sustainable practices, faux leather emerges as a beacon of hope, offering a viable solution without compromising on style or quality.
+        
+        Furthermore, faux leather's accessibility makes it a democratic choice, allowing individuals from diverse backgrounds to partake in the elegance of leather without ethical quandaries. Its affordability democratizes fashion, inviting everyone to embrace sophistication without sacrificing their values.
+        
+        In essence, faux leather embodies more than just an alternative; it represents a progressive shift towards a more conscientious future, where style meets sustainability in perfect harmony.</p>
+    </section>
+
+ 
+   
+       
+        </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+                <div class="newstext">
+                    <h4>Sign Up For Newsletters</h4>
+                    <p>Get E-mail Updates about our latest shop and <span>special offers</span></p>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Your email address">
+                    <button class="normal"> Sign Up</button>
+                </div>
+            </section>
+
+    <footer class="section-p1">
+                <div class="col">
+                    <p>Baredu Collection</p>
+                    <h4>Contact</h4>
+                    <p><strong>Address: </strong>: Kilimani, Moi, Nairobi Area, Kenya, 00100</p>
+                    <p><strong>Phone:</strong> +254700811428</p>
+                    <p><strong>Hours:</strong> 24/7</p>
+                    <div class="follow"> 
+                        <h4>Follow Us</h4>
+                        <div class="icon">
+                            <i class=" fab fa-facebook-f"></i>
+                            <i class=" fab fa-twitter"></i>
+                            <i class=" fab fa-instagram"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h4>About</h4>
+                    <a href="{% url 'core:about' %}">About us</a>
+                    <a href="#">Delivery Information</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms And Conditions</a>
+                    <a href="{% url 'core:contact' %}">Contact Us</a>
+                </div>
+                <div class="col">
+                    <h4>My Account</h4>
+                    <a href="#">Sign In</a>
+                    <a href="#">View cart</a>
+                    <a href="#">My Wishlist</a>
+                    <a href="#">Track My Order</a>
+                    <a href="#">Help</a>
+                </div>
+
+                <div class="col install">
+                    <h4>Install App</h4>
+                    <p>From App Store or Google Play</p>
+                    <div class="row">
+                        <img src="{% static 'assets/images/app.jpg' %}" alt="App Store">
+                        <img src="{% static 'assets/images/play.jpg' %}" alt="Google Play">
+                    </div>
+                    <p>Secured Payment Gateways</p>
+                    <img src="{% static 'assets/images/pay.png' %}" alt="Payment Gateways">
+                </div>
+            </footer>
+            
+            <script src="{% static 'assets/style.js' %}"></script>
+                
+            </body>
+            
+            </html>
